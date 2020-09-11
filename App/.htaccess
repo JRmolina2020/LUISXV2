@@ -1,0 +1,16 @@
+
+Options +followSymlinks
+RewriteEngine on
+
+RewriteRule ^marcas/([A-Za-z0-9_\s-_\-ÁÁáéíóúÁÉÍÓÚñÑ]+)$ marcas.php?nameurl=$1 [L]
+RewriteRule ^productos/([A-Za-z0-9_\s-_\-ÁÁáéíóúÁÉÍÓÚñÑ]+)/([A-Za-z0-9_\s-_\-áéíóúÁÉÍÓÚñÑ]+)$ productos.php?nameurl=$1&nameurl2=$2 [L]
+RewriteRule ^productos_esp/([A-Za-z0-9_\s-_\-ÁÁáéíóúÁÉÍÓÚñÑ]+)$ productos_esp.php?nameurl=$1 [L]
+RewriteRule ^producto/([A-Za-z0-9_\s-_\-ÁÁáéíóúÁÉÍÓÚñÑ]+)$ producto.php?nameurl=$1 [L]
+ErrorDocument 500 http://localhost/app/informacion
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+</IfModule>
